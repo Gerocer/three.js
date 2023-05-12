@@ -31,26 +31,14 @@
       </div>
       <div class="lesson">
         <div class="lesson-main">
-          <p>这些文章意在帮助你学习如何使用three.js。
-假设你知道怎么使用JavaScript编程。假设
-你知道DOM是什么，怎么写HTML以及使用JavaScript创建
-DOM元素。假设你知道如何使用 <code class="notranslate" translate="no">&lt;script&gt;</code>标签来
-引用外部的JavaScript文件以及行内脚本。
-假设你了解CSS并且知道
-<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors">CSS选择器</a>. 
-还假设你了解ES5、 ES6或者一些ES7。
-假设你知道浏览器通过事件和回调函数来运行JavaScript。
-假设你知道什么是闭包。</p>
+          <p>这些文章意在帮助你学习如何使用three.js。假设你知道怎么使用JavaScript编程。假设你知道DOM是什么，怎么写HTML以及使用JavaScript创建DOM元素。假设你知道如何使用 <code class="notranslate" translate="no">&lt;script&gt;</code>标签来引用外部的JavaScript文件以及行内脚本。假设你了解CSS并且知道<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors">CSS选择器</a>. 还假设你了解ES5、 ES6或者一些ES7。假设你知道浏览器通过事件和回调函数来运行JavaScript。假设你知道什么是闭包。</p>
 <p>这有一些简单的复习和笔记。</p>
 <h2 id="-document-queryselector-and-document-queryselectorall-"><code class="notranslate" translate="no">document.querySelector</code> and <code class="notranslate" translate="no">document.querySelectorAll</code></h2>
-<p>你可以使用<code class="notranslate" translate="no">document.querySelector</code>来选择和CSS选择器
-匹配的第一个元素。 <code class="notranslate" translate="no">document.querySelectorAll</code>返回
-所有和CSS选择器匹配的元素。</p>
+<p>你可以使用<code class="notranslate" translate="no">document.querySelector</code>来选择和CSS选择器匹配的第一个元素。<code class="notranslate" translate="no">document.querySelectorAll</code>返回所有和CSS选择器匹配的元素。</p>
 <h2 id="you-don-t-need-onbody-">You don't need <code class="notranslate" translate="no">onbody</code></h2>
 <p>很多20年前的页面像这样使用HTML</p>
 <pre class="prettyprint showlinemods notranslate notranslate" translate="no">&lt;body onload="somefunction()"&gt;
-</pre><p>这种风格已经被弃用了。将你的脚本放在
-页面的底部。</p>
+</pre><p>这种风格已经被弃用了。将你的脚本放在页面的底部。</p>
 <pre class="prettyprint showlinemods notranslate lang-html" translate="no">&lt;html&gt;
   &lt;head&gt;
     ...
@@ -77,11 +65,9 @@ const g = a(456);
 console.log(f());  // prints 123
 console.log(g());  // prints 456
 </pre>
-<p>在上面的代码中函数<code class="notranslate" translate="no">a</code>每次被调用都会创建一个新的函数。新函数
-会封存变量<code class="notranslate" translate="no">foo</code>. 这里有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">更多信息</a>.</p>
+<p>在上面的代码中函数<code class="notranslate" translate="no">a</code>每次被调用都会创建一个新的函数。新函数会封存变量<code class="notranslate" translate="no">foo</code>. 这里有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">更多信息</a>。</p>
 <h2 id="-this-">理解<code class="notranslate" translate="no">this</code>的工作原理</h2>
-<p><code class="notranslate" translate="no">this</code>并不是什么魔法。它实际上像是一个像被自动传给函数的参数一样的变量。
-简单的说就是像这样直接调用函数</p>
+<p><code class="notranslate" translate="no">this</code>并不是什么魔法。它实际上像是一个像被自动传给函数的参数一样的变量。简单的说就是像这样直接调用函数</p>
 <pre class="prettyprint showlinemods notranslate notranslate" translate="no">somefunction(a, b, c);
 </pre><p><code class="notranslate" translate="no">this</code>将会为<code class="notranslate" translate="no">null</code> (使用严格模式时) 当你使用<code class="notranslate" translate="no">.</code>操作符像这样调用函数时</p>
 <pre class="prettyprint showlinemods notranslate notranslate" translate="no">someobject.somefunction(a, b, c);
