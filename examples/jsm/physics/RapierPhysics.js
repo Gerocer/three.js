@@ -9,7 +9,7 @@ async function RapierPhysics() {
 	// Docs: https://rapier.rs/docs/api/javascript/JavaScript3D/	
 
 	const gravity = { x: 0.0, y: - 9.81, z: 0.0 };
-    const world = new RAPIER.World( gravity );
+	const world = new RAPIER.World( gravity );
 
 	function getCollider( geometry ) {
 
@@ -113,28 +113,35 @@ async function RapierPhysics() {
 
 	}
 
-	const vector = { x: 0, y: 0, z: 0 };
+	const ZERO = { x: 0, y: 0, z: 0 };
 
 	function setMeshPosition( mesh, position, index = 0 ) {
 
+		let  body = meshMap.get( mesh );
+
 		if ( mesh.isInstancedMesh ) {
 
-			const bodies = meshMap.get( mesh );
-			const body = bodies[ index ];
-
-			body.setAngvel( vector );
-			body.setLinvel( vector );
-			body.setTranslation( position );
-
-		} else if ( mesh.isMesh ) {
-
-			const body = meshMap.get( mesh );
-
-			body.setAngvel( vector );
-			body.setLinvel( vector );
-			body.setTranslation( position );
+			body = body[ index ];
 
 		}
+
+		body.setAngvel( ZERO );
+		body.setLinvel( ZERO );
+		body.setTranslation( position );
+
+	}
+
+	function setMeshVelocity( mesh, velocity, index = 0 ) {
+
+		let  body = meshMap.get( mesh );
+
+		if ( mesh.isInstancedMesh ) {
+
+			body = body[ index ];
+
+		}
+
+		body.setLinvel( velocity );
 
 	}
 
@@ -201,7 +208,8 @@ async function RapierPhysics() {
 
 	return {
 		addMesh: addMesh,
-		setMeshPosition: setMeshPosition
+		setMeshPosition: setMeshPosition,
+		setMeshVelocity: setMeshVelocity
 	};
 
 }

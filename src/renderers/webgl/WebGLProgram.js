@@ -469,6 +469,8 @@ function WebGLProgram( renderer, cacheKey, parameters, bindingStates ) {
 			parameters.displacementMap ? '#define USE_DISPLACEMENTMAP' : '',
 			parameters.emissiveMap ? '#define USE_EMISSIVEMAP' : '',
 
+			parameters.anisotropyMap ? '#define USE_ANISOTROPYMAP' : '',
+
 			parameters.clearcoatMap ? '#define USE_CLEARCOATMAP' : '',
 			parameters.clearcoatRoughnessMap ? '#define USE_CLEARCOAT_ROUGHNESSMAP' : '',
 			parameters.clearcoatNormalMap ? '#define USE_CLEARCOAT_NORMALMAP' : '',
@@ -505,6 +507,8 @@ function WebGLProgram( renderer, cacheKey, parameters, bindingStates ) {
 			parameters.metalnessMapUv ? '#define METALNESSMAP_UV ' + parameters.metalnessMapUv : '',
 			parameters.roughnessMapUv ? '#define ROUGHNESSMAP_UV ' + parameters.roughnessMapUv : '',
 
+			parameters.anisotropyMapUv ? '#define ANISOTROPYMAP_UV ' + parameters.anisotropyMapUv : '',
+
 			parameters.clearcoatMapUv ? '#define CLEARCOATMAP_UV ' + parameters.clearcoatMapUv : '',
 			parameters.clearcoatNormalMapUv ? '#define CLEARCOAT_NORMALMAP_UV ' + parameters.clearcoatNormalMapUv : '',
 			parameters.clearcoatRoughnessMapUv ? '#define CLEARCOAT_ROUGHNESSMAP_UV ' + parameters.clearcoatRoughnessMapUv : '',
@@ -527,7 +531,9 @@ function WebGLProgram( renderer, cacheKey, parameters, bindingStates ) {
 			parameters.vertexTangents ? '#define USE_TANGENT' : '',
 			parameters.vertexColors ? '#define USE_COLOR' : '',
 			parameters.vertexAlphas ? '#define USE_COLOR_ALPHA' : '',
-			parameters.vertexUvs2 ? '#define USE_UV2' : '',
+			parameters.vertexUv1s ? '#define USE_UV1' : '',
+			parameters.vertexUv2s ? '#define USE_UV2' : '',
+			parameters.vertexUv3s ? '#define USE_UV3' : '',
 
 			parameters.pointsUvs ? '#define USE_POINTS_UV' : '',
 
@@ -575,6 +581,24 @@ function WebGLProgram( renderer, cacheKey, parameters, bindingStates ) {
 			'attribute vec3 position;',
 			'attribute vec3 normal;',
 			'attribute vec2 uv;',
+
+			'#ifdef USE_UV1',
+
+			'	attribute vec2 uv1;',
+
+			'#endif',
+
+			'#ifdef USE_UV2',
+
+			'	attribute vec2 uv2;',
+
+			'#endif',
+
+			'#ifdef USE_UV3',
+
+			'	attribute vec2 uv3;',
+
+			'#endif',
 
 			'#ifdef USE_TANGENT',
 
@@ -658,6 +682,9 @@ function WebGLProgram( renderer, cacheKey, parameters, bindingStates ) {
 			parameters.normalMapTangentSpace ? '#define USE_NORMALMAP_TANGENTSPACE' : '',
 			parameters.emissiveMap ? '#define USE_EMISSIVEMAP' : '',
 
+			parameters.anisotropy ? '#define USE_ANISOTROPY' : '',
+			parameters.anisotropyMap ? '#define USE_ANISOTROPYMAP' : '',
+
 			parameters.clearcoat ? '#define USE_CLEARCOAT' : '',
 			parameters.clearcoatMap ? '#define USE_CLEARCOATMAP' : '',
 			parameters.clearcoatRoughnessMap ? '#define USE_CLEARCOAT_ROUGHNESSMAP' : '',
@@ -688,7 +715,9 @@ function WebGLProgram( renderer, cacheKey, parameters, bindingStates ) {
 			parameters.vertexTangents ? '#define USE_TANGENT' : '',
 			parameters.vertexColors || parameters.instancingColor ? '#define USE_COLOR' : '',
 			parameters.vertexAlphas ? '#define USE_COLOR_ALPHA' : '',
-			parameters.vertexUvs2 ? '#define USE_UV2' : '',
+			parameters.vertexUv1s ? '#define USE_UV1' : '',
+			parameters.vertexUv2s ? '#define USE_UV2' : '',
+			parameters.vertexUv3s ? '#define USE_UV3' : '',
 
 			parameters.pointsUvs ? '#define USE_POINTS_UV' : '',
 
